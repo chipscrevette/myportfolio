@@ -30,8 +30,9 @@ a:hover,a:focus-visible{border-color:var(--fg);outline:none}
 li,li>img,h2::after{transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.6,.5,1)}
 h2::after{content:"\2197";display:inline-block;margin-left:.35em;font-weight:400;opacity:0;transform:translate(-4px,4px)}
 li{position:relative}
-li .meta a::after{content:"";position:absolute;inset:-.75rem}
-li:hover .meta a{border-color:var(--fg)}
+li .meta a.go::after{content:"";position:absolute;inset:-.75rem}
+li .meta a:not(.go){position:relative;z-index:1}
+li:hover .meta a.go{border-color:var(--fg)}
 ul:has(li:not(.soon):hover) li:not(:hover){opacity:.35}
 li:not(.soon):hover>img{transform:translateY(-6px) rotate(-6deg) scale(1.06)}
 li:hover h2::after{opacity:.6;transform:none}
@@ -83,19 +84,19 @@ li:hover .spark polyline:nth-child(2){animation-delay:.12s}li:hover .spark polyl
       <img src="assets/orbi.webp" alt="La mascotte d'Orbi" width="240" height="154">
       <h2>Orbi</h2>
       <p data-i18n="orbi">Un assistant d'urbanisme qui lit le PLU de Biarritz en local. Une adresse, un projet : oui, non ou sous conditions, avec l'article cité mot à mot.</p>
-      <span class="meta"><span data-i18n="orbiM">27 / 40 au banc caché</span> · <a href="https://github.com/chipscrevette/orbi">github.com/chipscrevette/orbi</a></span>
+      <span class="meta"><span data-i18n="orbiM">27 / 40 au banc caché</span> · <a class="go" href="https://github.com/chipscrevette/orbi">code</a></span>
     </li>
     <li>
       <img src="assets/grenouille.webp" alt="La grenouille des Arpenteurs" width="229" height="240">
       <h2>Les Arpenteurs</h2>
       <p data-i18n="arp">Un site qui explique sans jargon comment comparer honnêtement des IA : la même question, la même carte, trois réponses.</p>
-      <span class="meta"><span data-i18n="arpM">13 questions · 50 réponses</span> · <a href="https://github.com/chipscrevette/atlas">github.com/chipscrevette/atlas</a></span>
+      <span class="meta"><span data-i18n="arpM">13 questions · 50 réponses</span> · <a class="go" href="https://chipscrevette.github.io/atlas/">site</a> · <a href="https://github.com/chipscrevette/atlas">code</a></span>
     </li>
     <li>
       <img class="tall" src="assets/chef.webp" alt="Le chef de La cuisine de l'IA" width="163" height="240">
       <h2 data-i18n="cui">La cuisine de l'IA</h2>
       <p data-i18n="cuiP">25 notions d'IA générative expliquées en gestes de cuisine, en pâte à modeler, avec de vrais chiffres.</p>
-      <span class="meta"><span data-i18n="cuiM">25 notions · 5 services</span> · <a href="https://github.com/chipscrevette/IAKitchen">github.com/chipscrevette/IAKitchen</a></span>
+      <span class="meta"><span data-i18n="cuiM">25 notions · 5 services</span> · <a class="go" href="https://chipscrevette.github.io/IAKitchen/site/">site</a> · <a href="https://github.com/chipscrevette/IAKitchen">code</a></span>
     </li>
     <li>
       <svg class="spark" viewBox="0 0 100 100" role="img" aria-label="Points, rebonds et passes de LeBron James, match par match">
@@ -105,7 +106,7 @@ li:hover .spark polyline:nth-child(2){animation-delay:.12s}li:hover .spark polyl
       </svg>
       <h2>LeBron James 2017-18</h2>
       <p data-i18n="lbP">Ma première exploration de D3.js : la saison de LeBron racontée match par match au fil du scroll. Remise au goût du jour en 2026, avec un rendu mobile revu.</p>
-      <span class="meta"><span data-i18n="lbM">104 matchs · D3 v7</span> · <a href="https://github.com/chipscrevette/d3_exploration">github.com/chipscrevette/d3_exploration</a></span>
+      <span class="meta"><span data-i18n="lbM">104 matchs · D3 v7</span> · <a class="go" href="https://chipscrevette.github.io/d3_exploration/">site</a> · <a href="https://github.com/chipscrevette/d3_exploration">code</a></span>
     </li>
   </ul>
   <span class="meta"><a href="https://github.com/chipscrevette">github.com/chipscrevette</a></span>
