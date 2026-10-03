@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Projets de Kevin : Orbi, Les Arpenteurs, La cuisine de l'IA, LeBron James 2017-18.">
+<title>Kevin, projets</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap">
+<style>
+/* une colonne étroite, quatre entrées, rien d'autre */
+:root{--bg:#fbfbfa;--fg:#1b1c1e;--mute:#8a8c90;--line:#e6e6e3;--chip:#ffffff;--well:#f0f0ed;--sans:"Geist",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--mono:"Geist Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121314;--fg:#e8e8e6;--mute:#7c7e82;--line:#26282a;--chip:#2a2c2f;--well:#1b1d1f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121314;--fg:#e8e8e6;--mute:#7c7e82;--line:#26282a;--chip:#2a2c2f;--well:#1b1d1f;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:34rem;margin:0 auto;padding-inline:20px;padding-block:14vh 12vh;display:grid;gap:5.5rem}
+header{display:flex;align-items:center;gap:1rem;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;margin-inline:-20px;padding:.9rem 20px;background:var(--bg)}
+header::after{content:"";position:absolute;left:0;right:0;top:100%;height:2rem;background:linear-gradient(var(--bg),transparent);pointer-events:none}
+.avatar{width:2.75rem;height:2.75rem;border-radius:50%;display:block}
+h1{font-weight:500;font-size:1rem;margin:0}
+li{grid-template-columns:5.5rem 1fr;column-gap:1.5rem}
+li>img{grid-row:1/4;align-self:center;width:5.5rem;height:5.5rem;object-fit:contain;object-position:center}
+li>*:not(img){grid-column:2;min-width:0}
+.meta{font-family:var(--mono);font-size:.72rem;color:var(--mute);letter-spacing:.02em}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:3.5rem}
+li{display:grid;row-gap:.4rem}
+h2{font-weight:500;font-size:1.35rem;margin:0;line-height:1.25;letter-spacing:-.015em}
+p{margin:0;max-width:30rem;color:var(--fg);opacity:.82}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+a:hover,a:focus-visible{border-color:var(--fg);outline:none}
+li,li>img,h2::after{transition:opacity .35s ease,transform .45s cubic-bezier(.3,1.6,.5,1)}
+h2::after{content:"\2197";display:inline-block;margin-left:.35em;font-weight:400;opacity:0;transform:translate(-4px,4px)}
+li{position:relative}
+li .meta a::after{content:"";position:absolute;inset:-.75rem}
+li:hover .meta a{border-color:var(--fg)}
+ul:has(li:not(.soon):hover) li:not(:hover){opacity:.35}
+li:not(.soon):hover>img{transform:translateY(-6px) rotate(-6deg) scale(1.06)}
+li:hover h2::after{opacity:.6;transform:none}
+.soon{opacity:.45}
+.soon .slot{grid-column:1;grid-row:1/4;align-self:center;justify-self:center;width:3rem;height:3rem;border:1px dashed var(--mute);border-radius:50%}
+.soon h2::after{content:none}
+.toggles{margin-left:auto;display:flex;align-items:center;gap:.5rem}
+.seg{position:relative;display:flex;padding:3px;border-radius:999px;background:var(--well)}
+.seg::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--chip);box-shadow:0 1px 2px rgb(0 0 0/.08);transition:transform .3s cubic-bezier(.3,1.3,.5,1)}
+.seg[data-lang="en"]::before{transform:translateX(100%)}
+.seg button,.icon{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--mute);background:none;border:0;cursor:pointer;transition:color .2s}
+.seg button{position:relative;z-index:1;width:2.2rem;padding:.3rem 0;border-radius:999px}
+.seg button[aria-pressed="true"]{color:var(--fg)}
+.icon{display:grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--well)}
+.icon svg{width:.95rem;height:.95rem;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round}
+.seg button:hover,.icon:hover{color:var(--fg)}
+.seg button:focus-visible,.icon:focus-visible{outline:1.5px solid var(--fg);outline-offset:2px}
+.icon svg{grid-area:1/1;transition:transform .5s cubic-bezier(.3,1.4,.5,1),opacity .25s}
+.icon .sun{opacity:0;transform:rotate(-90deg) scale(.4)}
+.is-dark .icon .sun{opacity:1;transform:none}.is-dark .icon .moon{opacity:0;transform:rotate(90deg) scale(.4)}
+.icon:hover .moon{transform:rotate(-20deg)}.is-dark .icon:hover .sun{transform:rotate(45deg)}.is-dark .icon:hover .moon{transform:rotate(90deg) scale(.4)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:2}
+li>img.tall{height:7.5rem;margin-block:-1rem}
+h1 .meta{margin-left:.5em;white-space:nowrap}
+.spark{grid-column:1;grid-row:1/4;align-self:center;width:5.5rem;height:5.5rem;overflow:visible;transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.spark polyline{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0}
+li:hover .spark{transform:translateY(-6px) scale(1.06)}
+li:hover .spark polyline{animation:draw .9s cubic-bezier(.6,0,.2,1) both}
+li:hover .spark polyline:nth-child(2){animation-delay:.12s}li:hover .spark polyline:nth-child(3){animation-delay:.24s}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){li:hover .spark,li:hover .spark polyline{transform:none;animation:none}li,li>img,h2::after{transition:none}li:not(.soon):hover>img{transform:none}}
+@media (max-width:420px){.spark{width:3.5rem;height:3.5rem}h1 .meta{display:block;margin-left:0}.soon .slot{width:2.5rem;height:2.5rem}li{grid-template-columns:3.5rem 1fr;column-gap:1rem}li>img{width:3.5rem;height:3.5rem}li>img.tall{height:5rem;margin-block:-.75rem}}
+@media (min-width:900px){html{font-size:118%}}
+@media (min-width:1400px){html{font-size:130%}}
+@media (max-width:640px){
+  main{padding-block:0 10vh;gap:3.5rem}
+  ul{padding-top:1rem}
+  h2::after{content:none}
+}
+</style>
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+<main>
+  <header><img class="avatar" src="assets/avatar.jpg" alt="Photo de profil de Kevin" width="44" height="44"><h1>Kevin <span class="meta" data-i18n="sub">projets, 2026</span></h1><div class="toggles"><div class="seg" id="seg" role="group" aria-label="Langue"><button type="button" data-l="fr" aria-pressed="true">FR</button><button type="button" data-l="en" aria-pressed="false">EN</button></div><button class="icon" id="theme" type="button" aria-label="Mode nuit"><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button></div></header>
+  <ul>
+    <li>
+      <img src="assets/orbi.webp" alt="La mascotte d'Orbi" width="240" height="154">
+      <h2>Orbi</h2>
+      <p data-i18n="orbi">Un assistant d'urbanisme qui lit le PLU de Biarritz en local. Une adresse, un projet : oui, non ou sous conditions, avec l'article cité mot à mot.</p>
+      <span class="meta"><span data-i18n="orbiM">27 / 40 au banc caché</span> · <a href="https://github.com/chipscrevette/orbi">github.com/chipscrevette/orbi</a></span>
+    </li>
+    <li>
+      <img src="assets/grenouille.webp" alt="La grenouille des Arpenteurs" width="229" height="240">
+      <h2>Les Arpenteurs</h2>
+      <p data-i18n="arp">Un site qui explique sans jargon comment comparer honnêtement des IA : la même question, la même carte, trois réponses.</p>
+      <span class="meta"><span data-i18n="arpM">13 questions · 50 réponses</span> · <a href="https://github.com/chipscrevette/atlas">github.com/chipscrevette/atlas</a></span>
+    </li>
+    <li>
+      <img class="tall" src="assets/chef.webp" alt="Le chef de La cuisine de l'IA" width="163" height="240">
+      <h2 data-i18n="cui">La cuisine de l'IA</h2>
+      <p data-i18n="cuiP">25 notions d'IA générative expliquées en gestes de cuisine, en pâte à modeler, avec de vrais chiffres.</p>
+      <span class="meta"><span data-i18n="cuiM">25 notions · 5 services</span> · <a href="https://github.com/chipscrevette/IAKitchen">github.com/chipscrevette/IAKitchen</a></span>
+    </li>
+    <li>
+      <svg class="spark" viewBox="0 0 100 100" role="img" aria-label="Points, rebonds et passes de LeBron James, match par match">
+<polyline pathLength="1" stroke="#ff6b6b" points="4.0,27.3 4.9,34.6 5.8,39.0 6.7,32.4 7.6,31.4 8.5,36.1 9.4,40.2 10.3,37.2 11.1,27.0 12.0,27.9 12.9,27.6 13.8,25.0 14.7,25.8 15.6,29.0 16.5,28.5 17.4,22.3 18.3,21.7 19.2,21.7 20.1,30.5 21.0,29.3 21.9,32.0 22.8,34.6 23.7,30.2 24.5,30.2 25.4,29.9 26.3,32.8 27.2,29.3 28.1,31.7 29.0,32.3 29.9,32.6 30.8,32.8 31.7,28.5 32.6,28.5 33.5,29.3 34.4,34.0 35.3,34.0 36.2,35.8 37.0,37.5 37.9,35.2 38.8,40.7 39.7,39.0 40.6,42.5 41.5,43.1 42.4,44.2 43.3,43.7 44.2,44.0 45.1,43.4 46.0,41.6 46.9,45.1 47.8,41.0 48.7,45.4 49.6,46.0 50.4,44.5 51.3,42.8 52.2,41.0 53.1,38.4 54.0,36.6 54.9,38.7 55.8,35.2 56.7,33.1 57.6,27.6 58.5,27.6 59.4,29.3 60.3,24.4 61.2,24.1 62.1,27.9 63.0,29.0 63.8,24.1 64.7,24.1 65.6,21.4 66.5,20.0 67.4,19.4 68.3,17.6 69.2,23.8 70.1,19.1 71.0,18.2 71.9,21.7 72.8,24.1 73.7,24.1 74.6,22.9 75.5,25.5 76.3,30.5 77.2,34.3 78.1,26.1 79.0,29.9 79.9,28.5 80.8,20.3 81.7,21.7 82.6,18.2 83.5,23.5 84.4,18.5 85.3,10.3 86.2,8.9 87.1,17.9 88.0,13.8 88.9,15.3 89.7,15.3 90.6,14.1 91.5,13.8 92.4,11.2 93.3,8.9 94.2,11.5 95.1,10.3 96.0,8.0"/>
+<polyline pathLength="1" stroke="#48bb78" points="4.0,30.0 4.9,51.5 5.8,60.0 6.7,66.2 7.6,63.7 8.5,66.6 9.4,64.7 10.3,65.3 11.1,63.5 12.0,64.5 12.9,67.6 13.8,68.0 14.7,65.3 15.6,62.5 16.5,64.1 17.4,59.8 18.3,62.9 19.2,62.9 20.1,60.9 21.0,57.4 21.9,55.9 22.8,55.1 23.7,58.6 24.5,59.4 25.4,57.4 26.3,59.0 27.2,54.7 28.1,54.3 29.0,55.9 29.9,57.0 30.8,57.4 31.7,59.4 32.6,57.8 33.5,58.2 34.4,58.6 35.3,59.4 36.2,62.1 37.0,62.1 37.9,62.9 38.8,64.1 39.7,67.2 40.6,64.5 41.5,63.7 42.4,64.1 43.3,66.8 44.2,66.4 45.1,64.9 46.0,64.5 46.9,66.0 47.8,64.9 48.7,62.5 49.6,61.7 50.4,60.9 51.3,58.2 52.2,56.2 53.1,56.6 54.0,57.0 54.9,54.7 55.8,51.9 56.7,51.5 57.6,51.5 58.5,51.5 59.4,52.7 60.3,54.3 61.2,53.5 62.1,52.7 63.0,51.5 63.8,51.5 64.7,51.5 65.6,51.5 66.5,52.3 67.4,53.9 68.3,52.7 69.2,53.5 70.1,53.5 71.0,53.9 71.9,53.5 72.8,55.1 73.7,56.6 74.6,57.0 75.5,57.4 76.3,57.8 77.2,57.8 78.1,55.5 79.0,54.7 79.9,53.1 80.8,54.3 81.7,56.2 82.6,56.6 83.5,56.6 84.4,55.9 85.3,55.5 86.2,56.2 87.1,58.2 88.0,59.0 88.9,62.1 89.7,64.1 90.6,62.1 91.5,60.9 92.4,59.4 93.3,59.4 94.2,58.2 95.1,57.4 96.0,57.4"/>
+<polyline pathLength="1" stroke="#4299e1" points="4.0,70.0 4.9,73.8 5.8,90.0 6.7,77.5 7.6,70.0 8.5,71.3 9.4,73.2 10.3,70.9 11.1,72.5 12.0,69.3 12.9,69.3 13.8,70.0 14.7,68.5 15.6,69.3 16.5,73.0 17.4,74.5 18.3,73.8 19.2,78.3 20.1,73.8 21.0,79.0 21.9,81.3 22.8,77.5 23.7,71.5 24.5,76.0 25.4,75.3 26.3,73.8 27.2,70.0 28.1,61.0 29.0,61.8 29.9,58.8 30.8,52.0 31.7,55.8 32.6,58.0 33.5,58.0 34.4,54.3 35.3,55.8 36.2,59.5 37.0,67.8 37.9,70.0 38.8,73.8 39.7,84.3 40.6,81.3 41.5,83.5 42.4,83.5 43.3,88.8 44.2,88.0 45.1,85.8 46.0,79.8 46.9,81.3 47.8,81.3 48.7,75.3 49.6,79.8 50.4,73.0 51.3,63.3 52.2,61.0 53.1,60.3 54.0,62.5 54.9,64.8 55.8,63.3 56.7,58.8 57.6,59.5 58.5,52.0 59.4,58.0 60.3,64.8 61.2,67.8 62.1,68.5 63.0,66.3 63.8,70.0 64.7,67.8 65.6,68.5 66.5,61.8 67.4,66.3 68.3,65.5 69.2,67.8 70.1,66.3 71.0,63.3 71.9,62.5 72.8,62.5 73.7,61.0 74.6,60.3 75.5,64.8 76.3,70.0 77.2,67.0 78.1,68.5 79.0,68.5 79.9,71.5 80.8,74.5 81.7,73.8 82.6,79.0 83.5,77.5 84.4,75.3 85.3,71.5 86.2,72.3 87.1,69.3 88.0,66.3 88.9,62.5 89.7,66.3 90.6,67.8 91.5,66.3 92.4,69.3 93.3,73.8 94.2,69.3 95.1,69.3 96.0,70.0"/>
+      </svg>
+      <h2>LeBron James 2017-18</h2>
+      <p data-i18n="lbP">Ma première exploration de D3.js : la saison de LeBron racontée match par match au fil du scroll. Remise au goût du jour en 2026, avec un rendu mobile revu.</p>
+      <span class="meta"><span data-i18n="lbM">104 matchs · D3 v7</span> · <a href="https://github.com/chipscrevette/d3_exploration">github.com/chipscrevette/d3_exploration</a></span>
+    </li>
+  </ul>
+  <span class="meta"><a href="https://github.com/chipscrevette">github.com/chipscrevette</a></span>
+</main>
+<script>
+(function(){
+  var T={en:{sub:"projects, 2026",orbi:"An urban planning assistant that reads the Biarritz zoning plan on your own machine. An address, a project: yes, no or with conditions, with the exact article quoted.",orbiM:"27 / 40 on the hidden benchmark",arp:"A plain-language site about comparing AI models fairly: the same question, the same map, three answers.",arpM:"13 questions · 50 answers",cui:"The AI Kitchen",cuiP:"25 generative AI concepts explained as kitchen moves, in modelling clay, with real numbers.",cuiM:"25 concepts · 5 courses",lbP:"My first exploration of D3.js: LeBron's season told game by game as you scroll. Refreshed in 2026, with a reworked mobile layout.",lbM:"104 games · D3 v7"},fr:{}};
+  var root=document.documentElement,nodes=document.querySelectorAll("[data-i18n]");
+  nodes.forEach(function(n){T.fr[n.dataset.i18n]=n.textContent});
+  var L={fr:{day:"Mode jour",night:"Mode nuit"},en:{day:"Day mode",night:"Night mode"}};
+  var lang="fr";
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function dark(){var t=root.getAttribute("data-theme");return t?t==="dark":matchMedia("(prefers-color-scheme: dark)").matches}
+  var seg=document.getElementById("seg"),th=document.getElementById("theme");
+  function labels(){var d=dark();root.classList.toggle("is-dark",d);th.setAttribute("aria-label",d?L[lang].day:L[lang].night);seg.dataset.lang=lang;seg.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===lang)})}
+  function setLang(l){lang=l;root.lang=l;nodes.forEach(function(n){n.textContent=T[l][n.dataset.i18n]});labels()}
+  var t=get("theme");if(t)root.setAttribute("data-theme",t);
+  setLang(get("lang")==="en"?"en":"fr");
+  th.onclick=function(){
+    var v=dark()?"light":"dark";
+    function apply(){root.setAttribute("data-theme",v);put("theme",v);labels()}
+    if(!document.startViewTransition||matchMedia("(prefers-reduced-motion: reduce)").matches){apply();return}
+    var b=th.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2,
+        r=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    document.startViewTransition(apply).ready.then(function(){
+      root.animate({clipPath:["circle(0px at "+x+"px "+y+"px)","circle("+r+"px at "+x+"px "+y+"px)"]},
+        {duration:650,easing:"cubic-bezier(.7,0,.25,1)",pseudoElement:"::view-transition-new(root)"});
+    });
+  };
+  seg.querySelectorAll("button").forEach(function(b){b.onclick=function(){setLang(b.dataset.l);put("lang",b.dataset.l)}});
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change",labels);
+})();
+</script>
+
+</body>
+</html>
