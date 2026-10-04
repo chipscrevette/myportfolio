@@ -234,7 +234,7 @@ li:hover .spark polyline:nth-child(2){animation-delay:.12s}li:hover .spark polyl
       if(still||!document.startViewTransition){apply();after();return}
       root.classList.add("vt-cv");
       var vt=document.startViewTransition(apply);
-      vt.updateCallbackDone.then(after,after);
+      vt.updateCallbackDone.then(after,after);vt.ready.catch(function(){});
       vt.finished.finally(function(){root.classList.remove("vt-cv")})}
     if(still){show();return}
     from.forEach(function(e){e.classList.add("go-out")});setTimeout(show,Math.min(from[0].children.length-1,8)*45+300)}
