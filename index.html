@@ -69,7 +69,10 @@ li:hover .spark polyline:nth-child(2){animation-delay:.12s}li:hover .spark polyl
 .hcv{display:none}.on-cv .hcv{display:inline}.on-cv .hpj{display:none}
 @media (max-width:420px){.on-cv h1 .hcv{display:block;font-family:var(--mono);font-size:.78rem;font-weight:400;color:var(--mute);white-space:nowrap}}
 @media (max-width:360px){.on-cv h1 .hcv{display:none}}
-.on-cv h1{animation:cvrise .5s cubic-bezier(.2,.8,.2,1) both}
+/* en-tête : avatar, titre et boutons glissent vers leur nouvelle place au lieu de sauter */
+.vt-cv .avatar{view-transition-name:cv-avatar}.vt-cv h1{view-transition-name:cv-title}.vt-cv .toggles{view-transition-name:cv-tools}
+::view-transition-group(cv-avatar),::view-transition-group(cv-title),::view-transition-group(cv-tools){animation-duration:.55s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+::view-transition-old(cv-title),::view-transition-new(cv-title),::view-transition-old(cv-tools),::view-transition-new(cv-tools){width:auto;height:auto}
 .cvpage{display:grid;gap:1.4rem;line-height:1.45;font-size:.9rem}
 .cvtop{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.5rem 1.5rem}
 .cvcontact{display:flex;flex-wrap:wrap;gap:.2rem 1rem}
@@ -223,9 +226,16 @@ li:hover .spark polyline:nth-child(2){animation-delay:.12s}li:hover .spark polyl
   stagger(cv);stagger(list);
   function swap(from,to,done){
     var still=matchMedia("(prefers-reduced-motion: reduce)").matches;
-    function show(){from.forEach(function(e){e.hidden=true;e.classList.remove("go-out")});to.forEach(function(e){e.hidden=false});
-      root.classList.toggle("on-cv",!cv.hidden);scrollTo(0,0);done();if(still){busy=false;return}
-      to.forEach(function(e){e.classList.add("go-in")});setTimeout(function(){to.forEach(function(e){e.classList.remove("go-in")});busy=false},1100)}
+    function apply(){from.forEach(function(e){e.hidden=true;e.classList.remove("go-out")});to.forEach(function(e){e.hidden=false});
+      root.classList.toggle("on-cv",!cv.hidden);scrollTo(0,0);if(!still)to.forEach(function(e){e.classList.add("go-in")})}
+    function after(){done();if(still){busy=false;return}
+      setTimeout(function(){to.forEach(function(e){e.classList.remove("go-in")});busy=false},1100)}
+    function show(){
+      if(still||!document.startViewTransition){apply();after();return}
+      root.classList.add("vt-cv");
+      var vt=document.startViewTransition(apply);
+      vt.updateCallbackDone.then(after,after);
+      vt.finished.finally(function(){root.classList.remove("vt-cv")})}
     if(still){show();return}
     from.forEach(function(e){e.classList.add("go-out")});setTimeout(show,Math.min(from[0].children.length-1,8)*45+300)}
   function showCV(on,push){
