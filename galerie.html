@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Galerie de cartes et de dataviz de Kevin, Master SIGAT.">
+<title>Kevin, galerie carto</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap">
+<style>
+/* même colonne que l'accueil, un peu plus large pour lire les affiches */
+:root{--bg:#fbfbfa;--fg:#1b1c1e;--mute:#8a8c90;--line:#e6e6e3;--sans:"Geist",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--mono:"Geist Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121314;--fg:#e8e8e6;--mute:#7c7e82;--line:#26282a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121314;--fg:#e8e8e6;--mute:#7c7e82;--line:#26282a;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+main{max-width:44rem;margin:0 auto;padding-inline:20px;padding-block:0 12vh;display:grid;gap:3.5rem}
+header{display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:5;margin-inline:-20px;padding:.9rem 20px;background:var(--bg)}
+header::after{content:"";position:absolute;left:0;right:0;top:100%;height:2rem;background:linear-gradient(var(--bg),transparent);pointer-events:none}
+.avatar{width:2.75rem;height:2.75rem;border-radius:50%;display:block}
+h1{font-weight:500;font-size:1rem;margin:0}
+.meta{font-family:var(--mono);font-size:.72rem;color:var(--mute);letter-spacing:.02em}
+h1 .meta{margin-left:.5em}
+.back{margin-left:auto}
+a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+a:hover,a:focus-visible{border-color:var(--fg);outline:none}
+figure{margin:0;display:grid;gap:.9rem}
+figure a{border:0;display:block}
+figure img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 1px 3px rgb(0 0 0/.08),0 8px 30px rgb(0 0 0/.06);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+figure a:hover img{transform:translateY(-4px)}
+h2{font-weight:500;font-size:1.35rem;margin:0;line-height:1.25;letter-spacing:-.015em}
+figcaption{display:grid;gap:.3rem}
+figcaption p{margin:0;opacity:.82;max-width:36rem}
+@media (prefers-reduced-motion:reduce){figure img{transition:none}}
+@media (min-width:900px){html{font-size:118%}}
+</style>
+</head>
+<body>
+<main>
+  <header><img class="avatar" src="assets/avatar.jpg" alt="Photo de profil de Kevin" width="44" height="44"><h1>Kevin <span class="meta" data-i18n="sub">galerie carto</span></h1><a class="meta back" href="./" data-i18n="back">← projets</a></header>
+  <figure>
+    <a href="assets/galerie/trams-bordeaux.webp" target="_blank" rel="noopener"><img src="assets/galerie/trams-bordeaux.webp" alt="Carte des lignes de tram de Bordeaux, notées selon la fréquence des passages et les boulangeries accessibles à pied" width="800" height="566"></a>
+    <figcaption><h2 data-i18n="t1">Attention à votre ligne !</h2><p data-i18n="d1">Quelle ligne de tram de Bordeaux dessert le mieux les gourmands ? Un score qui croise la fréquence des passages et les boulangeries à 8 minutes à pied de chaque arrêt.</p><span class="meta" data-i18n="m1">Master SIGAT · 2024 · OpenData Bordeaux Métropole, OSM, TravelTime</span></figcaption>
+  </figure>
+  <figure>
+    <a href="assets/galerie/pollution-diabete.webp" target="_blank" rel="noopener"><img src="assets/galerie/pollution-diabete.webp" alt="Carte bivariée des comtés américains : pollution aux particules fines et diabète diagnostiqué" width="800" height="599"></a>
+    <figcaption><h2 data-i18n="t2">L'air de rien</h2><p data-i18n="d2">Une carte bivariée par comté qui croise la pollution aux particules fines (PM2.5) et le diabète diagnostiqué aux États-Unis en 2020.</p><span class="meta" data-i18n="m2">Master SIGAT · 2024 · EPA, CDC</span></figcaption>
+  </figure>
+  <figure>
+    <a href="assets/galerie/lebron-carriere.webp" target="_blank" rel="noopener"><img src="assets/galerie/lebron-carriere.webp" alt="Affiche sur la carrière de LeBron James : points par équipe, tirs de la saison 2023-2024, comparaison avec Michael Jordan" width="800" height="566"></a>
+    <figcaption><h2 data-i18n="t3">LeBron James, une carrière de roi</h2><p data-i18n="d3">21 saisons en une affiche : points par équipe, carte des tirs 2023-2024 et comparaison avec Michael Jordan.</p><span class="meta" data-i18n="m3">Master SIGAT · 2024 · travail de groupe · Basketball Reference</span></figcaption>
+  </figure>
+  <span class="meta"><a href="./" data-i18n="back2">← retour aux projets</a></span>
+</main>
+<script>
+(function(){
+  var T={en:{sub:"map gallery",back:"← projects",t1:"Mind your line!",d1:"Which Bordeaux tram line serves food lovers best? A score combining service frequency and the bakeries within an 8-minute walk of each stop.",m1:"Master SIGAT · 2024 · OpenData Bordeaux Métropole, OSM, TravelTime",t2:"Something in the air",d2:"A bivariate county map crossing fine particle pollution (PM2.5) and diagnosed diabetes in the United States in 2020.",m2:"Master SIGAT · 2024 · EPA, CDC",t3:"LeBron James, a king's career",d3:"21 seasons on one poster: points by team, a 2023-24 shot chart and a comparison with Michael Jordan.",m3:"Master SIGAT · 2024 · group project · Basketball Reference",back2:"← back to projects"}};
+  var root=document.documentElement;
+  try{var t=localStorage.getItem("theme");if(t)root.setAttribute("data-theme",t);
+    if(localStorage.getItem("lang")==="en"){root.lang="en";document.querySelectorAll("[data-i18n]").forEach(function(n){var v=T.en[n.dataset.i18n];if(v)n.textContent=v})}}catch(e){}
+})();
+</script>
+</body>
+</html>
